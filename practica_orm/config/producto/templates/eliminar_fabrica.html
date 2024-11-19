@@ -1,0 +1,14 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<section class="container mt-5">
+    <h2 class="text-center">Eliminar Fábrica</h2>
+    <p class="text-center">¿Estás seguro de que deseas eliminar la fábrica <strong>{{ fabrica.nombre }}</strong>?</p>
+    <form method="post" class="text-center">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Sí, eliminar</button>
+        <a href="{% url 'listar_fabricas' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</section>
+{% endblock %}
+

@@ -1,0 +1,28 @@
+{% extends 'layout.html' %}
+{% block title %}Sitio de Productos{% endblock %}
+{% block content %}
+<!-- Sección principal de bienvenida -->
+<section class="container mt-5 text-center">
+    <div class="jumbotron p-4" style="background-color: #d1ecf1; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+        <h1 class="display-4" style="color: #0c5460;">Bienvenido al sitio del Supermercado</h1>
+        <p class="lead" style="color: #6c757d;">Aquí puedes gestionar, explorar y administrar tus productos favoritos.</p>
+        <hr class="my-4">
+        {% if user.is_authenticated %}
+            <p class="text-muted">Hola, {{ user.username }}! Bienvenido de nuevo.</p>
+
+        {% else %}
+            <p class="text-muted">Por favor, <a href="{% url 'login' %}">inicia sesión</a> para acceder a todas las funciones.</p>
+        {% endif %}
+    </div>
+</section>
+
+<!-- Barra de búsqueda -->
+{% if user.is_authenticated %}
+<section class="container mt-5 mb-5">
+    <form method="get" action="{% url 'listar_productos' %}" class="d-flex mt-4">
+        <input class="form-control me-2" type="search" placeholder="Buscar productos" aria-label="Search">
+        <button class="btn btn-outline-info" type="submit">Buscar</button>
+    </form>
+</section>
+{% endif %}
+{% endblock %}

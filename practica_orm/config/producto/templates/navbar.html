@@ -1,0 +1,61 @@
+{% load bootstrap5 %}
+
+<nav class="navbar navbar-expand-lg navbar-light bg-info">
+    <div class="container-fluid">
+        <!-- Título de la barra de navegación -->
+        <a class="navbar-brand" href="{% url 'index' %}">Productos</a>
+        
+        <!-- Botón de colapso para dispositivos pequeños -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <!-- Enlaces de navegación y menú desplegable -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'index' %}">Inicio</a>
+                </li>
+                {% if user.is_authenticated %}
+                    {% if perms.producto.add_producto %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'crear_producto' %}">Agregar Productos</a>
+                        </li>
+                    {% endif %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'listar_productos' %}">Listar Productos</a>
+                    </li>
+                    <!-- Nuevo: Agregar y listar fábricas -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'crear_fabrica' %}">Agregar Fábrica</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'listar_fabricas' %}">Listar Fábrica</a>
+                    </li>
+                {% endif %}
+            </ul>
+            
+            <!-- Menú de usuario a la derecha -->
+            <ul class="navbar-nav ms-auto">
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logout' %}">Salir</a>   
+                    </li>
+                    <li class="nav-item text-end">
+                        <span class="nav-link">
+                            Hola,<br>{{ user.username }}
+                        </span>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">Iniciar sesión</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'registro' %}">Registro</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>
+

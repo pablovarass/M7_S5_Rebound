@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="container mt-5 p-4" style="background-color: #d1ecf1; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+    <h2 class="text-center" style="color: #0c5460;">Registro</h2>
+
+    {% if messages %}
+        <div class="mt-4">
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }} alert-dismissible fade show px-2 py-1" style="font-size: 0.9rem; margin: 0.5rem 0;" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <form method="post" class="mt-3">
+        {% csrf_token %}
+        <div style="color: #0c5460;">
+            {{ form.as_p }}
+        </div>
+        <button type="submit" class="btn btn-info text-white">Registrarse</button>
+    </form>
+</section>
+{% endblock %}
+

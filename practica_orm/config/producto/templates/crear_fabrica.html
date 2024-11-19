@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="container mt-5">
+    <h2 class="text-center">Crear Nueva Fábrica</h2>
+
+    <!-- Mostrar mensajes -->
+    {% if messages %}
+    <div class="container mt-3">
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre de la Fábrica</label>
+            <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Ingresa el nombre de la fábrica" required>
+        </div>
+        <div class="mt-3">
+            <button type="submit" class="btn btn-primary">Crear Fábrica</button>
+            <a href="{% url 'listar_fabricas' %}" class="btn btn-secondary">Cancelar</a>
+        </div>
+    </form>
+</section>
+{% endblock %}
+

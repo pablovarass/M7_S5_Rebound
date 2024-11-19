@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <section class="container mt-5">
+        <h2 class="text-center">Editar Producto</h2>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.non_field_errors }}
+                    
+                    {{ form.as_p|safe }}
+                    
+                    <style>
+                        #id_descripcion {
+                            height: 100px; 
+                            resize: vertical; 
+                            max-height: 300px; 
+                        }
+                    </style>
+                    
+                    <div class="d-grid gap-2">
+                        <input type="submit" value="Guardar cambios" class="btn btn-primary">
+                        <a href="{% url 'listar_productos' %}" class="btn btn-secondary">Cancelar</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+

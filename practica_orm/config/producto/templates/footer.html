@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es" class="h-100">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" 
+          integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" 
+          crossorigin="anonymous" referrerpolicy="no-referrer">
+    <title>Gestión de Productos</title>
+</head>
+<body class="d-flex flex-column min-vh-100">
+    
+    <main class="flex-shrink-0">
+        <div class="container">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </main>
+
+    <footer class="text-center text-lg-start mt-auto" style="background-color: #d1ecf1; color: #0c5460;">
+        <section class="d-flex justify-content-center p-4 border-top">
+            <div>
+                <span>© 2024 Gestión de Productos, Inc. Todos los derechos reservados.</span>
+            </div>
+        </section>
+        <section class="d-flex justify-content-center pb-4">
+            <div>
+                <a href="#" class="text-info mx-2">Términos de servicio</a>
+                |
+                <a href="#" class="text-info mx-2">Política de privacidad</a>
+            </div>
+        </section>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/js/all.min.js" 
+            integrity="sha512-6sSYJqDreZRZGkJ3b+YfdhB3MzmuP9R7X1QZ6g5aIXhRZvR1Y/N/P47jmnkENm7YL3oqsmI6AK+V6AD99uWDnIw==" 
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</body>
+</html>
